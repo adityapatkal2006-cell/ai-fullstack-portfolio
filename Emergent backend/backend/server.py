@@ -1,89 +1,53 @@
-from fastapi import FastAPI, APIRouter
-from dotenv import load_dotenv
-from starlette.middleware.cors import CORSMiddleware
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
-import logging
-from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
-import uuid
-from datetime import datetime, timezone
+import resend  # This is the library you just added to requirements.txt
+import os      # This is needed to read your RESEND_API_KEY from Render
+from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 
-
-ROOT_DIR = Path(__file__).parent
-load_dotenv(ROOT_DIR / '.env')
-
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
-
-# Create the main app without a prefix
 app = FastAPI()
 
-# Create a router with the /api prefix
-api_router = APIRouter(prefix="/api")
-
-
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
-    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-
-class StatusCheckCreate(BaseModel):
-    client_name: str
-
-# Add your routes to the router instead of directly to app
-@api_router.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
-
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
-
-# Include the router in the main app
-app.include_router(api_router)
-
+# 1. SETUP CORS (So your Vercel frontend can talk to Render)
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=["*"],  # For now, this allows all origins to talk to your API
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
+# 2. INITIALIZE RESEND
+# This pulls the key you saved in the Render Environment settings
+resend.api_key = os.getenv("RESEND_API_KEY")
 
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
+@app.post("/api/contact")
+async def contact_form(request: Request):
+    # This reads the data sent from your React website
+    data = await request.json()
+    
+    try:
+        # 3. SEND THE EMAIL VIA API (Port 443 - Not blocked by Render)
+        params = {
+            "from": "onboarding@resend.dev", # Resend's default sender for free accounts
+            "to": "adityapatkal2006@gmail.com",
+            "subject": f"Portfolio Message: {data.get('subject', 'No Subject')}",
+            "html": f"""
+                <p>You have a new message from your portfolio:</p>
+                <p><strong>Name:</strong> {data.get('name')}</p>
+                <p><strong>Email:</strong> {data.get('email')}</p>
+                <p><strong>Message:</strong> {data.get('message')}</p>
+            """
+        }
+        
+        # Trigger the actual send
+        resend.Emails.send(params)
+        
+        return {"status": "success", "message": "Email sent successfully!"}
+        
+    except Exception as e:
+        # This will show up in your Render logs if something fails
+        print(f"Error sending email: {e}")
+        return {"status": "error", "message": str(e)}
+
+if __name__ == "__main__":
+    import uvicorn
+    # This matches the uvicorn command you used in your Render settings
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
