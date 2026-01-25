@@ -1,0 +1,8 @@
+.App {
+  background: var(--bg-primary);
+  min-height: 100vh;
+}
+
+main {
+  position: relative;
+}
