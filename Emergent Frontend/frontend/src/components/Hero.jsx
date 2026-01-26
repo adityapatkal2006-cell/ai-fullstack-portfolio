@@ -1,8 +1,20 @@
 import React from 'react';
 import Spline from '@splinetool/react-spline';
-import { ArrowRight, Sparkles, Github, Linkedin, Instagram, X } from 'lucide-react';
+import { ArrowRight, Sparkles, Github, Linkedin, Instagram } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import '../styles/Hero.css';
+
+// Custom Branded X Logo to match image_d73bd1.png
+const XLogo = ({ size = 20 }) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="currentColor"
+  >
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932L18.901 1.153zM17.61 20.644h2.039L6.486 3.24H4.298L17.61 20.644z"/>
+  </svg>
+);
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -48,7 +60,7 @@ const Hero = () => {
                 {personalInfo.tagline}
               </p>
 
-              {/* SOCIAL LINKS - UPDATED TO X LOGO */}
+              {/* SOCIAL LINKS - UPDATED WITH BRANDED X LOGO */}
               <div className="hero-social-links">
                 <a 
                   href="https://linkedin.com/in/adityaraje-patkal-b04a34380" 
@@ -72,7 +84,7 @@ const Hero = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  <X size={20} />
+                  <XLogo size={18} />
                 </a>
                 <a 
                   href="https://www.instagram.com/adityaraje_2006/" 
