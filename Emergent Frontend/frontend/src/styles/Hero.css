@@ -38,23 +38,23 @@
   z-index: 1;
 }
 
-/* PROFILE IMAGE SPACER - PRESERVES YOUR LAYOUT */
+/* PROFILE IMAGE SPACER */
 .profile-image-wrapper {
   width: 160px;
-  height: 160px; /* Matches your previous image height exactly */
-  margin-bottom: 32px; /* Keeps the gap between the "invisible" photo and your name */
+  height: 120px; /* Reduced slightly for the new "Hi" greeting layout */
+  margin-bottom: 24px;
   display: block;
-  visibility: hidden; /* Hides everything inside but keeps the physical space */
+  visibility: hidden;
 }
 
-/* TYPOGRAPHY - HIGH CONTRAST */
+/* TYPOGRAPHY */
 .hero-title {
-  font-size: 72px;
+  font-size: 64px;
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.04em;
   color: #ffffff;
-  margin: 0 0 24px 0;
+  margin: 0 0 12px 0;
 }
 
 .accent-text {
@@ -63,10 +63,10 @@
 }
 
 .hero-subtitle {
-  font-size: 24px;
-  color: #a1a1aa; /* Muted gray for subtitle */
-  font-weight: 500;
-  margin-bottom: 12px;
+  font-size: 28px;
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
 .hero-description {
@@ -74,7 +74,37 @@
   line-height: 1.6;
   color: #71717a;
   max-width: 500px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+}
+
+/* HORIZONTAL SOCIAL LINKS - FIXED */
+.hero-social-links {
+  display: flex;         /* Enables Flexbox */
+  flex-direction: row;   /* Forces icons to sit side-by-side */
+  gap: 16px;             /* Adds horizontal spacing between buttons */
+  margin-bottom: 32px;
+  width: fit-content;
+}
+
+.social-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  background: transparent;
+  text-decoration: none;
+}
+
+.social-icon-btn:hover {
+  border-color: #00ffc8;
+  color: #00ffc8;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
 }
 
 /* GLASS-STYLE STATS */
@@ -110,6 +140,7 @@
 @media (max-width: 1024px) {
   .hero-container { flex-direction: column; text-align: center; }
   .hero-title { font-size: 48px; }
+  .hero-social-links { justify-content: center; margin-left: auto; margin-right: auto; }
   .hero-stats { justify-content: center; }
   .profile-image-wrapper { margin-left: auto; margin-right: auto; }
 }
