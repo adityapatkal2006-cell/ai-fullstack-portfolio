@@ -26,7 +26,7 @@ async def contact_form(request: Request):
     try:
         # 3. SEND THE EMAIL VIA API (Port 443 - Not blocked by Render)
         params = {
-            "from": "onboarding@resend.dev", # Resend's default sender for free accounts
+            "from": "Adityaraje's Portfolio <onboarding@resend.dev>",
             "to": "adityapatkal2006@gmail.com",
             "subject": f"Portfolio Message: {data.get('subject', 'No Subject')}",
             "html": f"""
