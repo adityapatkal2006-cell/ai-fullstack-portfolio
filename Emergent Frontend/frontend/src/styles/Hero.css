@@ -21,7 +21,6 @@
   background-size: 50px 50px; /* Sharp technical grid */
 }
 
-/* REMOVING COLORFUL ORBS FOR A CLEANER LOOK */
 .grid-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -37,6 +36,15 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
+}
+
+/* PROFILE IMAGE SPACER - PRESERVES YOUR LAYOUT */
+.profile-image-wrapper {
+  width: 160px;
+  height: 160px; /* Matches your previous image height exactly */
+  margin-bottom: 32px; /* Keeps the gap between the "invisible" photo and your name */
+  display: block;
+  visibility: hidden; /* Hides everything inside but keeps the physical space */
 }
 
 /* TYPOGRAPHY - HIGH CONTRAST */
@@ -98,18 +106,10 @@
   letter-spacing: 0.05em;
 }
 
-/* PROFILE IMAGE SHARPENING */
-.profile-image {
-  width: 160px;
-  height: 160px;
-  border-radius: 20px; /* Modern squircle instead of circle */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  filter: grayscale(20%);
-}
-
 /* RESPONSIVE FIXES */
 @media (max-width: 1024px) {
   .hero-container { flex-direction: column; text-align: center; }
   .hero-title { font-size: 48px; }
   .hero-stats { justify-content: center; }
+  .profile-image-wrapper { margin-left: auto; margin-right: auto; }
 }
