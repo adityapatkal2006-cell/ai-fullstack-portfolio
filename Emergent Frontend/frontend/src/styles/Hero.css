@@ -2,7 +2,7 @@
 .hero-section {
   min-height: 100vh;
   background-color: #000000;
-  padding: 110px 7.6% 40px; /* Increased top padding to shift content downside slightly */
+  padding: 110px 7.6% 40px; /* Shifts content downside slightly */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,13 +41,26 @@
 /* 3. ALIGNMENT SPACER */
 .profile-image-wrapper.spacer-only {
   width: 160px;
-  height: 65px; /* Adjusted to keep buttons at the same level in the viewport */
+  height: 65px; 
   margin-bottom: 25px;
   display: block;
   visibility: hidden;
 }
 
-/* 4. TYPOGRAPHY & BRANDING */
+/* 4. TYPOGRAPHY & BADGE */
+.hero-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 255, 200, 0.1);
+  color: #00ffc8;
+  padding: 6px 12px;
+  border-radius: 10px; /* Rounded corners for badge */
+  width: fit-content;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 255, 200, 0.2);
+}
+
 .hero-title {
   font-size: 72px;
   font-weight: 700;
@@ -89,7 +102,7 @@
 .social-icon-btn {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
+  border-radius: 12px; /* Changed from circle to square with round edges */
   border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
@@ -108,7 +121,7 @@
   box-shadow: 0 8px 20px rgba(0, 255, 200, 0.15);
 }
 
-/* 6. ACTION BUTTONS - VIEWPORT LOCKED */
+/* 6. ACTION BUTTONS - ROUNDED EDGES */
 .hero-actions {
   display: flex;
   gap: 16px;
@@ -117,7 +130,7 @@
 
 .btn-primary, .btn-secondary {
   padding: 14px 28px;
-  border-radius: 8px;
+  border-radius: 12px; /* Square buttons with round edges */
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -136,6 +149,11 @@
   background-color: rgba(255, 255, 255, 0.05);
   color: #fff;
   border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 255, 200, 0.15);
 }
 
 /* RESPONSIVE FIXES */
