@@ -1,4 +1,5 @@
 import React from 'react';
+import Spline from '@splinetool/react-spline';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import '../styles/Hero.css';
@@ -77,6 +78,13 @@ const Hero = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* 3D Animation Section */}
+        <div className="hero-visual">
+          <div className="spline-container">
+            <Spline scene="https://prod.spline.design/NbVmy6DPLhY-5Lvg/scene.splinecode" />
           </div>
         </div>
       </div>
