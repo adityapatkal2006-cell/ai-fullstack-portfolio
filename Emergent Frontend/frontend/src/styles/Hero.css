@@ -2,7 +2,7 @@
 .hero-section {
   min-height: 100vh;
   background-color: #000000;
-  padding: 85px 7.6% 40px; /* Locked padding for eye-level buttons */
+  padding: 110px 7.6% 40px; /* Increased top padding to shift content downside slightly */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,13 +41,13 @@
 /* 3. ALIGNMENT SPACER */
 .profile-image-wrapper.spacer-only {
   width: 160px;
-  height: 50px; /* Adjusted to keep buttons at the same level */
+  height: 65px; /* Adjusted to keep buttons at the same level in the viewport */
   margin-bottom: 25px;
   display: block;
   visibility: hidden;
 }
 
-/* 4. TYPOGRAPHY */
+/* 4. TYPOGRAPHY & BRANDING */
 .hero-title {
   font-size: 72px;
   font-weight: 700;
@@ -73,7 +73,7 @@
   font-size: 17px;
   line-height: 1.6;
   color: #71717a;
-  max-width: 500px;
+  max-width: 550px;
   margin-bottom: 32px;
 }
 
@@ -108,7 +108,7 @@
   box-shadow: 0 8px 20px rgba(0, 255, 200, 0.15);
 }
 
-/* 6. ACTION BUTTONS */
+/* 6. ACTION BUTTONS - VIEWPORT LOCKED */
 .hero-actions {
   display: flex;
   gap: 16px;
