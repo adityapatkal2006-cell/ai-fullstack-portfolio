@@ -86,7 +86,7 @@ const Hero = () => {
         <div className="hero-visual">
           <div className="spline-container">
             {/* The new "Neural Mesh" animation URL is correct */}
-            <Spline scene="https://prod.spline.design/Jae-6kR0C8uP-T-3/scene.splinecode" />
+            {/* <Spline scene="https://prod.spline.design/Jae-6kR0C8uP-T-3/scene.splinecode" /> */}
           </div>
         </div>
       </div>
