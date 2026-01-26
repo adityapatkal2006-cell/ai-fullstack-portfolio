@@ -21,8 +21,10 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero-section">
+      {/* Background with Resend-style grid */}
       <div className="animated-background">
         <div className="grid-overlay"></div>
+        {/* These orbs are now hidden by your new CSS, keeping them is safe */}
         <div className="gradient-orb orb-1"></div>
         <div className="gradient-orb orb-2"></div>
         <div className="gradient-orb orb-3"></div>
@@ -60,6 +62,7 @@ const Hero = () => {
                 </button>
               </div>
 
+              {/* Corrected Indentation for Stats */}
               <div className="hero-stats">
                 <div className="stat-item">
                   <div className="stat-value">IIT Jodhpur</div>
@@ -67,8 +70,8 @@ const Hero = () => {
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item">
-                  <div className="stat-value">AI & DS</div>
-                  <div className="stat-label">{personalInfo.program}</div>
+                  <div className="stat-value">Applied AI & DS</div>
+                  <div className="stat-label">Program</div>
                 </div>
                 <div className="stat-divider"></div>
                 <div className="stat-item">
@@ -82,7 +85,8 @@ const Hero = () => {
 
         <div className="hero-visual">
           <div className="spline-container">
-            <Spline scene="https://prod.spline.design/NbVmy6DPLhY-5Lvg/scene.splinecode" />
+            {/* The new "Neural Mesh" animation URL is correct */}
+            <Spline scene="https://prod.spline.design/Jae-6kR0C8uP-T-3/scene.splinecode" />
           </div>
         </div>
       </div>
