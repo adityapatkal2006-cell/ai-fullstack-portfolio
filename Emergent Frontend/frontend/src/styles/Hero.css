@@ -24,7 +24,7 @@
 .grid-overlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(circle at 50% 50%, transparent 0%, #000 80%);
+  background: radial-gradient(circle at 50% 50%, transparent 0%, #000 95%);
 }
 
 .hero-container {
@@ -38,23 +38,23 @@
   z-index: 1;
 }
 
-/* PROFILE IMAGE SPACER */
-.profile-image-wrapper {
+/* PROFILE IMAGE SPACER - PRESERVES LAYOUT WITHOUT PHOTO */
+.profile-image-wrapper.spacer-only {
   width: 160px;
-  height: 120px; /* Reduced slightly for the new "Hi" greeting layout */
+  height: 120px; 
   margin-bottom: 24px;
   display: block;
-  visibility: hidden;
+  visibility: hidden; /* Reserves the space so text doesn't jump up */
 }
 
-/* TYPOGRAPHY */
+/* TYPOGRAPHY - HIGH CONTRAST */
 .hero-title {
-  font-size: 64px;
+  font-size: 72px;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.04em;
   color: #ffffff;
-  margin: 0 0 12px 0;
+  margin: 0 0 16px 0;
 }
 
 .accent-text {
@@ -77,34 +77,35 @@
   margin-bottom: 32px;
 }
 
-/* HORIZONTAL SOCIAL LINKS - FIXED */
+/* MINIMALIST CIRCULAR SOCIAL LINKS */
 .hero-social-links {
-  display: flex;         /* Enables Flexbox */
-  flex-direction: row;   /* Forces icons to sit side-by-side */
-  gap: 16px;             /* Adds horizontal spacing between buttons */
-  margin-bottom: 32px;
+  display: flex;         /* Horizontal Alignment */
+  flex-direction: row; 
+  gap: 16px;             /* Spacing between buttons */
+  margin-bottom: 40px;
   width: fit-content;
 }
 
 .social-icon-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;    /* Perfect Circle */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Thin minimalist border */
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  transition: all 0.3s ease;
-  background: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.02);
   text-decoration: none;
 }
 
 .social-icon-btn:hover {
   border-color: #00ffc8;
   color: #00ffc8;
-  transform: translateY(-3px);
-  box-shadow: 0 0 15px rgba(0, 255, 200, 0.2);
+  transform: translateY(-4px); /* Smooth lift effect */
+  background: rgba(0, 255, 200, 0.05);
+  box-shadow: 0 8px 20px rgba(0, 255, 200, 0.15);
 }
 
 /* GLASS-STYLE STATS */
@@ -142,5 +143,5 @@
   .hero-title { font-size: 48px; }
   .hero-social-links { justify-content: center; margin-left: auto; margin-right: auto; }
   .hero-stats { justify-content: center; }
-  .profile-image-wrapper { margin-left: auto; margin-right: auto; }
+  .profile-image-wrapper.spacer-only { margin-left: auto; margin-right: auto; }
 }
