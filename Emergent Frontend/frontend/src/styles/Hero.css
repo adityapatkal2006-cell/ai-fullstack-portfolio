@@ -1,8 +1,8 @@
 /* RESET & CORE THEME */
 .hero-section {
   min-height: 100vh;
-  background-color: #000000; /* Pure Black foundation */
-  padding: 80px 7.6% 60px;
+  background-color: #000000;
+  padding: 30px 7.6% 20px; /* Reduced top padding to shift everything up */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px; /* Sharp technical grid */
+  background-size: 50px 50px;
 }
 
 .grid-overlay {
@@ -38,27 +38,27 @@
   z-index: 1;
 }
 
-/* PROFILE IMAGE SPACER - PRESERVES LAYOUT WITHOUT PHOTO */
+/* MINIMIZED SPACER - FORCES CONTENT UPSIDE */
 .profile-image-wrapper.spacer-only {
   width: 160px;
-  height: 120px; 
-  margin-bottom: 24px;
+  height: 10px; /* Drastically reduced from 120px */
+  margin-bottom: 10px;
   display: block;
-  visibility: hidden; /* Reserves the space so text doesn't jump up */
+  visibility: hidden;
 }
 
-/* TYPOGRAPHY - HIGH CONTRAST */
+/* TYPOGRAPHY - TIGHTENED VERTICAL SPACING */
 .hero-title {
   font-size: 72px;
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.04em;
   color: #ffffff;
-  margin: 0 0 16px 0;
+  margin: 0 0 8px 0; /* Reduced from 16px */
 }
 
 .accent-text {
-  color: #00ffc8; /* Signature Neon Cyan */
+  color: #00ffc8;
   text-shadow: 0 0 20px rgba(0, 255, 200, 0.3);
 }
 
@@ -66,31 +66,30 @@
   font-size: 28px;
   color: #ffffff;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px; /* Reduced from 16px */
 }
 
 .hero-description {
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.5;
   color: #71717a;
   max-width: 500px;
-  margin-bottom: 32px;
+  margin-bottom: 24px; /* Reduced from 32px */
 }
 
-/* MINIMALIST CIRCULAR SOCIAL LINKS */
 .hero-social-links {
-  display: flex;         /* Horizontal Alignment */
+  display: flex;
   flex-direction: row; 
-  gap: 16px;             /* Spacing between buttons */
-  margin-bottom: 40px;
+  gap: 16px;
+  margin-bottom: 28px; /* Reduced from 40px */
   width: fit-content;
 }
 
 .social-icon-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;    /* Perfect Circle */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Thin minimalist border */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,45 +102,9 @@
 .social-icon-btn:hover {
   border-color: #00ffc8;
   color: #00ffc8;
-  transform: translateY(-4px); /* Smooth lift effect */
+  transform: translateY(-4px);
   background: rgba(0, 255, 200, 0.05);
   box-shadow: 0 8px 20px rgba(0, 255, 200, 0.15);
 }
 
-/* GLASS-STYLE STATS */
-.hero-stats {
-  display: flex;
-  gap: 24px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.stat-value {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-.stat-label {
-  font-size: 12px;
-  color: #71717a;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* RESPONSIVE FIXES */
-@media (max-width: 1024px) {
-  .hero-container { flex-direction: column; text-align: center; }
-  .hero-title { font-size: 48px; }
-  .hero-social-links { justify-content: center; margin-left: auto; margin-right: auto; }
-  .hero-stats { justify-content: center; }
-  .profile-image-wrapper.spacer-only { margin-left: auto; margin-right: auto; }
-}
+/* ... keep the rest of your stats and responsive CSS ... */
