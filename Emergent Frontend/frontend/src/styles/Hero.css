@@ -1,8 +1,8 @@
-/* RESET & CORE THEME */
+/* 1. RESET & CORE THEME */
 .hero-section {
   min-height: 100vh;
-  background-color: #000000;
-  padding: 30px 7.6% 20px; /* Reduced top padding to shift everything up */
+  background-color: #000000; /* Pure Black foundation */
+  padding: 30px 7.6% 20px; /* Reduced top padding to shift content upside */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,7 +10,7 @@
   overflow: hidden;
 }
 
-/* THE RESEND GRID SYSTEM */
+/* 2. THE RESEND GRID SYSTEM */
 .animated-background {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -18,7 +18,7 @@
   background-image: 
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-size: 50px 50px; /* Sharp technical grid */
 }
 
 .grid-overlay {
@@ -27,6 +27,7 @@
   background: radial-gradient(circle at 50% 50%, transparent 0%, #000 95%);
 }
 
+/* 3. LAYOUT CONTAINER */
 .hero-container {
   display: flex;
   align-items: center;
@@ -38,27 +39,27 @@
   z-index: 1;
 }
 
-/* MINIMIZED SPACER - FORCES CONTENT UPSIDE */
+/* 4. MINIMIZED SPACER (PREVENTS CONTENT SHIFT) */
 .profile-image-wrapper.spacer-only {
   width: 160px;
-  height: 10px; /* Drastically reduced from 120px */
+  height: 10px; /* Minimized to bring buttons into view instantly */
   margin-bottom: 10px;
   display: block;
   visibility: hidden;
 }
 
-/* TYPOGRAPHY - TIGHTENED VERTICAL SPACING */
+/* 5. TYPOGRAPHY & BRANDING */
 .hero-title {
   font-size: 72px;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;
   color: #ffffff;
-  margin: 0 0 8px 0; /* Reduced from 16px */
+  margin: 0 0 8px 0; /* Tightened margin */
 }
 
 .accent-text {
-  color: #00ffc8;
+  color: #00ffc8; /* Signature Neon Cyan */
   text-shadow: 0 0 20px rgba(0, 255, 200, 0.3);
 }
 
@@ -66,7 +67,7 @@
   font-size: 28px;
   color: #ffffff;
   font-weight: 600;
-  margin-bottom: 12px; /* Reduced from 16px */
+  margin-bottom: 12px;
 }
 
 .hero-description {
@@ -74,22 +75,23 @@
   line-height: 1.5;
   color: #71717a;
   max-width: 500px;
-  margin-bottom: 24px; /* Reduced from 32px */
+  margin-bottom: 24px;
 }
 
+/* 6. HORIZONTAL SOCIAL LINKS (MINIMALIST CIRCLES) */
 .hero-social-links {
-  display: flex;
+  display: flex;         /* Forces horizontal row */
   flex-direction: row; 
-  gap: 16px;
-  margin-bottom: 28px; /* Reduced from 40px */
+  gap: 16px; 
+  margin-bottom: 28px;
   width: fit-content;
 }
 
 .social-icon-btn {
   width: 44px;
   height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;    /* Perfect circle */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Thin minimalist border */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,4 +109,75 @@
   box-shadow: 0 8px 20px rgba(0, 255, 200, 0.15);
 }
 
-/* ... keep the rest of your stats and responsive CSS ... */
+/* 7. ACTION BUTTONS (GET IN TOUCH / VIEW PROJECTS) */
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #00ffc8;
+  color: #000;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 8. GLASS-STYLE STATS */
+.hero-stats {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  width: fit-content;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 9. RESPONSIVE FIXES */
+@media (max-width: 1024px) {
+  .hero-container { flex-direction: column; text-align: center; }
+  .hero-title { font-size: 48px; }
+  .hero-social-links, .hero-actions, .hero-stats { justify-content: center; margin-left: auto; margin-right: auto; }
+  .profile-image-wrapper.spacer-only { margin-left: auto; margin-right: auto; }
+}
