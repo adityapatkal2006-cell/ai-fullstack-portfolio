@@ -1,6 +1,6 @@
 import React from 'react';
 import Spline from '@splinetool/react-spline';
-import { ArrowRight, Sparkles, Github, Linkedin, Instagram, Twitter } from 'lucide-react';
+import { ArrowRight, Sparkles, Github, Linkedin, Instagram, X } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import '../styles/Hero.css';
 
@@ -48,7 +48,7 @@ const Hero = () => {
                 {personalInfo.tagline}
               </p>
 
-              {/* SOCIAL LINKS - CORRECTED URLS */}
+              {/* SOCIAL LINKS - UPDATED TO X LOGO */}
               <div className="hero-social-links">
                 <a 
                   href="https://linkedin.com/in/adityaraje-patkal-b04a34380" 
@@ -72,7 +72,7 @@ const Hero = () => {
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
-                  <Twitter size={20} />
+                  <X size={20} />
                 </a>
                 <a 
                   href="https://www.instagram.com/adityaraje_2006/" 
